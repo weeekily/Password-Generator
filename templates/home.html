@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h1>Password Generator</h1>
+        <p class="subtitle">Generate a secure random password in one click</p>
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="letters">Letters</label>
+                <input type="number" id="letters" name="letters" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="numbers">Numbers</label>
+                <input type="number" id="numbers" name="numbers" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="symbols">Symbols</label>
+                <input type="number" id="symbols" name="symbols" min="0" required>
+            </div>
+
+            <button type="submit" class="generate-btn">Generate password</button>
+        </form>
+
+        {% if password %}
+            <div class="password-box">
+                <h2>Your password:</h2>
+                <p class="password-value">{{ password }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="footer">
+        Built with Flask • Python practice
+    </div>
+</div>
+
+</body>
+</html>

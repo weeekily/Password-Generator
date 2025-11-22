@@ -1,42 +1,22 @@
-import string
 import random
+import string
 
-letters = list(string.ascii_letters)  # a-z + A-Z
-numbers = list(string.digits)  # 0-9
-symbols = list(string.punctuation)  # svi
+def generate_password(n_letters, n_symbols, n_numbers):
+    letters = list(string.ascii_letters)   # a-z + A-Z
+    numbers = list(string.digits)          # 0-9
+    symbols = list(string.punctuation)     # !@#$%^&*...
 
-print("Welcome to Password Generator!")
-n_letters = int(input("How many letters would your like in your password?\n"))
-n_symbols = int(input("How many symbols would you like?\n"))
-n_numbers = int(input("How many numbers would you like?\n"))
+    password_list = []
+    for _ in range(n_letters):
+        password_list.append(random.choice(letters))
 
-password_list = []
+    for _ in range(n_numbers):
+        password_list.append(random.choice(numbers))
 
-for char in range(1, n_letters + 1):
-    password_list.append(random.choice(letters))
+    for _ in range(n_symbols):
+        password_list.append(random.choice(symbols))
 
-for num in range(1, n_numbers + 1):
-    password_list.append(random.choice(numbers))
+    random.shuffle(password_list)
 
-for sym in range(1, n_symbols + 1):
-    password_list.append(random.choice(symbols))
-
-random.shuffle(password_list)
-
-password = ""
-for char in password_list:
-    password += char
-
-print(f"You new password is: {password}")
-
-
-
-
-
-
-
-
-
-
-
-
+    password = ''.join(password_list)
+    return password
